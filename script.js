@@ -1,4 +1,8 @@
 
+// ==========================================
+// GLORY'S INVESTIGATION ❤️
+// ==========================================
+
 function checkPassword() {
     const password = document.getElementById("password").value.trim().toLowerCase();
     const message = document.getElementById("message");
@@ -10,6 +14,10 @@ function checkPassword() {
         message.textContent = "Wrong answer! 😂 Try again, detective.";
     }
 }
+
+// ==========================================
+// QUESTIONS
+// ==========================================
 
 const questions = [
     {
@@ -113,6 +121,10 @@ const seriousReactions = [
     "Thank you for sharing that."
 ];
 
+// ==========================================
+// START
+// ==========================================
+
 function startInvestigation() {
     document.getElementById("welcome-screen").style.display = "none";
     document.getElementById("quiz-screen").style.display = "block";
@@ -122,6 +134,10 @@ function startInvestigation() {
 
     showQuestion();
 }
+
+// ==========================================
+// SHOW QUESTIONS WITH ANIMATION
+// ==========================================
 
 function showQuestion() {
     const questionArea = document.getElementById("question-placeholder");
@@ -134,9 +150,7 @@ function showQuestion() {
             ${question.category}
         </p>
 
-        <h2 style="margin-bottom: 25px;">
-            ${question.question}
-        </h2>
+        <h2>${question.question}</h2>
 
         <div class="answers">
             ${question.answers.map((answer, index) => `
@@ -157,7 +171,15 @@ function showQuestion() {
                 : "Next Question ➜"}
         </button>
     `;
+
+    questionArea.classList.remove("question-enter");
+    void questionArea.offsetWidth;
+    questionArea.classList.add("question-enter");
 }
+
+// ==========================================
+// SELECT ANSWER
+// ==========================================
 
 function selectAnswer(answerIndex) {
     const buttons = document.querySelectorAll(".answer-option");
@@ -179,9 +201,17 @@ function selectAnswer(answerIndex) {
         reaction = seriousReactions[currentQuestion - 9];
     }
 
-    document.getElementById("reaction").textContent = reaction;
+    const reactionElement = document.getElementById("reaction");
+
+    reactionElement.textContent = reaction;
+    reactionElement.classList.add("reaction-pop");
+
     document.getElementById("next-button").style.display = "inline-block";
 }
+
+// ==========================================
+// NEXT QUESTION
+// ==========================================
 
 function nextQuestion() {
     currentQuestion++;
@@ -193,29 +223,56 @@ function nextQuestion() {
     }
 }
 
+// ==========================================
+// ROMANTIC FINAL SCREEN ❤️
+// ==========================================
+
 function showFinalMessage() {
-    document.getElementById("quiz-screen").innerHTML = `
+    const quizScreen = document.getElementById("quiz-screen");
+
+    quizScreen.classList.add("final-screen");
+
+    quizScreen.innerHTML = `
+        <div class="final-hearts">💗 💖 💗</div>
+
         <h1>INVESTIGATION COMPLETE! 🎉</h1>
 
         <h2>Well, Glory... ❤️</h2>
 
-        <p>You survived all 15 questions.
-        Dennis would like to congratulate you. 😂</p>
+        <p>
+            You survived all 15 questions.
+            Dennis is impressed. 😂
+        </p>
 
-        <p>But honestly, this investigation was never
-        about finding the right answers.</p>
+        <p>
+            But honestly, this investigation was never
+            about finding the right answers.
+        </p>
 
-        <p>It was about understanding where we stand,
-        whether there's room for an honest conversation,
-        and what we both want moving forward.</p>
+        <p>
+            It was about understanding where we stand,
+            whether there's room for an honest conversation,
+            and what we both want moving forward.
+        </p>
 
-        <p>No pressure. No expectations.
-        Just honesty. ❤️</p>
+        <div class="final-poem">
+            Some stories don't go as planned,<br>
+            Some feelings are hard to understand.<br>
+            But every moment has its place,<br>
+            Every memory leaves a trace.<br><br>
+
+            Whatever tomorrow brings our way,<br>
+            I hope we meet it with honesty someday.<br>
+            No pressure, no promises to make,<br>
+            Just kindness in whatever path we take. ❤️
+        </div>
 
         <h2>Thank you for playing! 🌷</h2>
 
-        <p style="color: #ffb6d5;">
+        <p class="final-message">
             Case closed... or maybe just a new chapter? 👀
         </p>
+
+        <div class="final-hearts">❤️ 🥰 ❤️</div>
     `;
 }
