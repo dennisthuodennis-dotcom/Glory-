@@ -1,10 +1,8 @@
 
 /* =================================
-   GLORY UNDER INVESTIGATION ❤️
-   COMPLETE DESIGN
+   GLORY'S INVESTIGATION ❤️
+   ROMANTIC ANIMATIONS
 ================================= */
-
-/* GENERAL SETTINGS */
 
 * {
     margin: 0;
@@ -14,41 +12,85 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(
-        135deg,
-        #190d25,
-        #531c48,
-        #a83268
-    );
-
+    background: linear-gradient(135deg, #190d25, #531c48, #a83268);
     color: white;
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* FLOATING HEARTS */
+
+body::before,
+body::after {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    animation: floatingHearts 8s ease-in-out infinite;
+}
+
+body::before {
+    content: "❤️  💗";
+    font-size: 30px;
+    left: 8%;
+    bottom: -60px;
+}
+
+body::after {
+    content: "💕  💖";
+    font-size: 25px;
+    right: 8%;
+    bottom: -60px;
+    animation-delay: 3s;
+}
+
+@keyframes floatingHearts {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
 }
 
 /* MAIN CONTAINER */
 
 .container {
+    position: relative;
+    z-index: 1;
     background: rgba(255, 255, 255, 0.10);
     padding: 40px;
     border-radius: 20px;
-
     width: 100%;
     max-width: 500px;
-
     text-align: center;
-
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-
     backdrop-filter: blur(10px);
+    animation: containerEntrance 1s ease;
 }
 
-/* HEADINGS */
+@keyframes containerEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* HEADINGS AND TEXT */
 
 h1 {
     font-size: 30px;
@@ -61,48 +103,34 @@ h2 {
     margin-bottom: 20px;
 }
 
-h3 {
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 25px 0;
-}
-
-/* PARAGRAPHS */
-
 p {
     font-size: 17px;
     line-height: 1.6;
     margin-bottom: 25px;
 }
 
-/* PASSWORD INPUT */
+/* INPUT */
 
 input {
     width: 100%;
     padding: 15px;
-
     border: 2px solid #ff85b2;
     border-radius: 10px;
-
     background: white;
     font-size: 16px;
-
     margin-bottom: 20px;
     outline: none;
 }
 
-/* GENERAL BUTTONS */
+/* BUTTONS */
 
 button {
     background: #ff4f91;
     color: white;
-
     border: none;
     padding: 15px 25px;
-
     border-radius: 30px;
     font-size: 16px;
-
     cursor: pointer;
     transition: 0.3s;
 }
@@ -112,22 +140,32 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* SCREEN VISIBILITY */
+button:active {
+    transform: scale(0.95);
+}
 
-/* Initial screen */
+/* SCREEN VISIBILITY */
 
 #login-screen {
     display: block;
 }
 
-/* Hidden until JavaScript reveals them */
-
 #welcome-screen,
 #quiz-screen {
     display: none;
+    animation: screenEntrance 0.8s ease;
 }
 
-/* PASSWORD MESSAGE */
+@keyframes screenEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 #message {
     margin-top: 20px;
@@ -135,7 +173,24 @@ button:hover {
     font-weight: bold;
 }
 
-/* QUIZ ANSWER BUTTONS */
+/* QUESTION ANIMATION */
+
+.question-enter {
+    animation: questionEntrance 0.65s ease;
+}
+
+@keyframes questionEntrance {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ANSWER BUTTONS */
 
 .answers {
     display: flex;
@@ -145,15 +200,44 @@ button:hover {
 
 .answer-option {
     width: 100%;
-
     border: 1px solid #ffb6d5;
     background: rgba(255, 79, 145, 0.2);
-
     text-align: left;
     border-radius: 12px;
-
     padding: 16px;
     font-size: 15px;
+    animation: answerEntrance 0.5s ease both;
+}
+
+.answer-option:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.answer-option:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.answer-option:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.answer-option:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.answer-option:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes answerEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .answer-option:hover {
@@ -167,10 +251,84 @@ button:hover {
     transform: none;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* REACTION ANIMATION */
+
+.reaction-pop {
+    color: #ffb6d5;
+    font-weight: bold;
+    animation: reactionPop 0.6s ease;
+}
+
+@keyframes reactionPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    70% {
+        transform: scale(1.12);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* FINAL ROMANTIC SCREEN */
+
+.final-screen {
+    animation: finalEntrance 1.2s ease;
+}
+
+@keyframes finalEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.final-hearts {
+    font-size: 35px;
+    margin-bottom: 20px;
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.15);
+    }
+}
+
+.final-poem {
+    background: rgba(255, 182, 213, 0.12);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 25px 0;
+    color: #ffe0ed;
+    font-style: italic;
+    line-height: 1.9;
+}
+
+.final-message {
+    color: #ffb6d5;
+    font-weight: bold;
+}
+
+/* MOBILE FRIENDLY */
 
 @media (max-width: 500px) {
-
     .container {
         padding: 25px;
     }
@@ -186,6 +344,16 @@ button:hover {
     p {
         font-size: 15px;
     }
-
 }
 
+/* RESPECT REDUCED MOTION SETTINGS */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
