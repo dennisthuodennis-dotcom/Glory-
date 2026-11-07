@@ -1,0 +1,191 @@
+
+/* =================================
+   GLORY UNDER INVESTIGATION ❤️
+   COMPLETE DESIGN
+================================= */
+
+/* GENERAL SETTINGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #190d25,
+        #531c48,
+        #a83268
+    );
+
+    color: white;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    background: rgba(255, 255, 255, 0.10);
+    padding: 40px;
+    border-radius: 20px;
+
+    width: 100%;
+    max-width: 500px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(10px);
+}
+
+/* HEADINGS */
+
+h1 {
+    font-size: 30px;
+    color: #ffb6d5;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 25px 0;
+}
+
+/* PARAGRAPHS */
+
+p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* PASSWORD INPUT */
+
+input {
+    width: 100%;
+    padding: 15px;
+
+    border: 2px solid #ff85b2;
+    border-radius: 10px;
+
+    background: white;
+    font-size: 16px;
+
+    margin-bottom: 20px;
+    outline: none;
+}
+
+/* GENERAL BUTTONS */
+
+button {
+    background: #ff4f91;
+    color: white;
+
+    border: none;
+    padding: 15px 25px;
+
+    border-radius: 30px;
+    font-size: 16px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff85b2;
+    transform: scale(1.05);
+}
+
+/* SCREEN VISIBILITY */
+
+/* Initial screen */
+
+#login-screen {
+    display: block;
+}
+
+/* Hidden until JavaScript reveals them */
+
+#welcome-screen,
+#quiz-screen {
+    display: none;
+}
+
+/* PASSWORD MESSAGE */
+
+#message {
+    margin-top: 20px;
+    color: #ffb6d5;
+    font-weight: bold;
+}
+
+/* QUIZ ANSWER BUTTONS */
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-option {
+    width: 100%;
+
+    border: 1px solid #ffb6d5;
+    background: rgba(255, 79, 145, 0.2);
+
+    text-align: left;
+    border-radius: 12px;
+
+    padding: 16px;
+    font-size: 15px;
+}
+
+.answer-option:hover {
+    background: #ff4f91;
+    transform: translateY(-2px);
+}
+
+.answer-option:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+}
+

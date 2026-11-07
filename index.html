@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glory Under Investigation ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- PASSWORD SCREEN -->
+        <div id="login-screen">
+
+            <h1>🔐 PRIVATE ACCESS</h1>
+
+            <h2>Glory's Investigation ❤️</h2>
+
+            <p>What was the last month we saw each other?</p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your answer..."
+            >
+
+            <button onclick="checkPassword()">
+                Unlock Investigation
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+        <!-- WELCOME SCREEN -->
+        <div id="welcome-screen">
+
+            <h1>WELCOME, GLORY! ❤️</h1>
+
+            <p>Your investigation starts now.</p>
+
+            <p>15 questions. No escaping. 😂</p>
+
+            <button onclick="startInvestigation()">
+                Begin Investigation 😂
+            </button>
+
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen">
+
+            <h1>THE INVESTIGATION ❤️</h1>
+
+            <p id="question-placeholder">
+                Your first question is waiting...
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
